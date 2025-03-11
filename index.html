@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plataforma de Aprendizagem</title>
+    <!-- Font Awesome para ícones -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #4CAF50;
+            --secondary-color: #388E3C;
+            --light-color: #f4f4f4;
+            --dark-color: #333;
+            --shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--light-color);
+            line-height: 1.6;
+        }
+
+        /* Barra de navegação */
+        nav {
+            background-color: var(--secondary-color);
+            padding: 0 20px;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            color: white;
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo i {
+            margin-right: 10px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            padding: 15px;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #e0e0e0;
+        }
+
+        .mobile-menu {
+            display: none;
+            font-size: 1.5rem;
+            color: white;
+            cursor: pointer;
+        }
+
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .menu {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 30px 20px;
+            justify-items: center;
+            margin-bottom: 60px; 
+        }
+
+        .menu-item {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            text-align: center;
+            padding: 25px;
+            width: 100%;
+            max-width: 250px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+        }
+
+        .menu-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .menu-item i {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        .menu-item a {
+            text-decoration: none;
+            color: var(--dark-color);
+            font-size: 18px;
+            display: block;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        .menu-item p {
+            color: #666;
+            margin-top: 10px;
+            font-size: 14px;
+        }
+
+                .category-tags {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 5px;
+            margin-top: 15px;
+        }
+
+        .tag {
+            background-color: #e8f5e9;
+            color: var(--primary-color);
+            padding: 3px 8px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+      
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 15px 0;
+            /* Alterado de fixed para relative para não sobrepor o conteúdo */
+            position: relative;
+            width: 100%;
+            bottom: 0;
+        }
+
+        .footer-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .footer-info {
+            display: flex;
+            align-items: center;
+        }
+
+        .footer-logo {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-right: 15px;
+        }
+
+        .footer-logo i {
+            margin-right: 8px;
+            color: var(--primary-color);
+        }
+
+        .footer-contact {
+            font-size: 0.9rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 10px;
+        }
+
+        .social-links a {
+            color: white;
+            background-color: #555;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: background-color 0.3s;
+            font-size: 0.9rem;
+        }
+
+        .social-links a:hover {
+            background-color: var(--primary-color);
+        }
+
+        .copyright {
+            width: 100%;
+            text-align: center;
+            margin-top: 10px;
+            font-size: 0.9rem;
+        }
+
+        .footer-links {
+            display: flex;
+            flex-wrap: wrap;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            font-size: 0.9rem;
+        }
+
+        .footer-links li {
+            margin: 0 10px;
+        }
+
+        .footer-links a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 60px;
+                left: 0;
+                right: 0;
+                background-color: var(--secondary-color);
+                z-index: 1;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .mobile-menu {
+                display: block;
+            }
+
+            .footer-container {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .footer-info {
+                flex-direction: column;
+                margin-bottom: 15px;
+            }
+
+            .footer-logo {
+                margin-right: 0;
+                margin-bottom: 10px;
+            }
+
+            .social-links {
+                justify-content: center;
+                margin: 15px 0;
+            }
+
+            .footer-links {
+                justify-content: center;
+                margin: 10px 0;
+            }
+
+            .footer-links li {
+                margin: 5px 10px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .menu-item {
+                padding: 15px;
+                max-width: 200px;
+            }
+
+            .menu-item i {
+                font-size: 2rem;
+            }
+
+            .menu-item a {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <div class="nav-container">
+        <a href="index.html" class="logo">
+            <i class="fas fa-graduation-cap"></i>
+            Plataforma de Aprendizagem
+        </a>
+        <ul class="nav-links">
+            <li><a href="index.html"><i class="fas fa-home"></i> Início</a></li>
+            <li><a href="cursos.html"><i class="fas fa-book-open"></i> Cursos</a></li>
+            <li><a href="instrutores.html"><i class="fas fa-chalkboard-teacher"></i> Instrutores</a></li>
+            <li><a href="sobre.html"><i class="fas fa-info-circle"></i> Sobre</a></li>
+            <li><a href="contato.html"><i class="fas fa-envelope"></i> Contato</a></li>
+        </ul>
+        <div class="mobile-menu">
+            <i class="fas fa-bars"></i>
+        </div>
+    </div>
+</nav>
+
+<header>
+    <div class="container">
+        <h1><i class="fas fa-seedling"></i> Plataforma de Aprendizagem</h1>
+        <p>Cursos e Tutoriais em Agricultura, Saúde, Educação e Empreendedorismo</p>
+    </div>
+</header>
+
+<div class="container">
+    <div class="menu">
+        <div class="menu-item">
+            <i class="fas fa-book"></i>
+            <a href="biblioteca.html">Biblioteca</a>
+            <p>Acesse nossa biblioteca digital com artigos, e-books e documentos.</p>
+            <div class="category-tags">
+                <span class="tag">Agricultura</span>
+                <span class="tag">Educação</span>
+            </div>
+        </div>
+        <div class="menu-item">
+            <i class="fas fa-video"></i>
+            <a href="videos.html">Vídeos</a>
+            <p>Tutoriais em vídeo e aulas completas gravadas por especialistas.</p>
+            <div class="category-tags">
+                <span class="tag">Saúde</span>
+                <span class="tag">Agricultura</span>
+            </div>
+        </div>
+        <div class="menu-item">
+            <i class="fas fa-comments"></i>
+            <a href="forum.html">Fórum de Discussões</a>
+            <p>Participe de discussões e tire suas dúvidas com a comunidade.</p>
+            <div class="category-tags">
+                <span class="tag">Comunidade</span>
+                <span class="tag">Suporte</span>
+            </div>
+        </div>
+        <div class="menu-item">
+            <i class="fas fa-briefcase"></i>
+            <a href="empreendedorismo.html">Empreendedorismo</a>
+            <p>Aprenda a desenvolver negócios sustentáveis e inovadores.</p>
+            <div class="category-tags">
+                <span class="tag">Negócios</span>
+                <span class="tag">Inovação</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <div class="footer-container">
+        <div class="footer-info">
+            <div class="footer-logo">
+                <i class="fas fa-seedling"></i> Plataforma de Aprendizagem
+            </div>
+            <div class="footer-contact">
+                <span><i class="fas fa-envelope"></i> contato@plataformaedu.com.br</span> | 
+        
+            </div>
+        </div>
+        
+        <ul class="footer-links">
+            <li><a href="sobre.html">Sobre</a></li>
+            <li><a href="cursos.html">Cursos</a></li>
+            <li><a href="parceiros.html">Parceiros</a></li>
+            <li><a href="privacidade.html">Privacidade</a></li>
+            <li><a href="termos.html">Termos de Uso</a></li>
+        </ul>
+        
+        <div class="social-links">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+            <a href="#"><i class="fab fa-whatsapp"></i></a>
+        </div>
+        
+        <div class="copyright">
+            <p>&copy; 2025 Plataforma de Aprendizagem. Todos os direitos reservados.</p>
+        </div>
+    </div>
+</footer>
+
+<!-- Script para o menu mobile -->
+<script>
+    document.querySelector('.mobile-menu').addEventListener('click', function() {
+        document.querySelector('.nav-links').classList.toggle('active');
+    });
+</script>
+
+</body>
+</html>

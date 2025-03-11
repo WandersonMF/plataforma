@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plataforma de Aprendizagem</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        .login-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+        }
+
+        .login-box {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 300px;
+        }
+
+        .login-box h2 {
+            margin-bottom: 20px;
+            font-size: 24px;
+            color: #333;
+        }
+
+        .login-box input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+
+        .login-box button {
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .login-box button:hover {
+            background-color: #45a049;
+        }
+
+        .menu {
+            display: none;
+            padding: 20px;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .menu-item {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            padding: 20px;
+            width: 150px;
+            transition: transform 0.3s ease;
+        }
+
+        .menu-item:hover {
+            transform: translateY(-10px);
+        }
+
+        .menu-item img {
+            width: 64px;
+            height: 64px;
+        }
+
+        .menu-item a {
+            text-decoration: none;
+            color: #333;
+            font-size: 18px;
+            display: block;
+            margin-top: 10px;
+        }
+
+        footer {
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Plataforma de Aprendizagem</h1>
+    <p>Cursos e Tutoriais em Agricultura, Saúde, Educação e Empreendedorismo</p>
+</header>
+
+<!-- Tela de Login -->
+<div class="login-container" id="login-container">
+    <div class="login-box">
+        <h2>Faça o Login</h2>
+        <input type="text" id="username" placeholder="Usuário" required>
+        <input type="password" id="password" placeholder="Senha" required>
+        <button onclick="login()">Entrar</button>
+    </div>
+</div>
+
+<!-- Menu Principal -->
+<div class="menu" id="menu">
+    <div class="menu-item">
+        <img src="https://via.placeholder.com/64" alt="Biblioteca">
+        <a href="biblioteca.html">Biblioteca</a>
+    </div>
+    <div class="menu-item">
+        <img src="https://via.placeholder.com/64" alt="Vídeos">
+        <a href="videos.html">Vídeos</a>
+    </div>
+    <div class="menu-item">
+        <img src="https://via.placeholder.com/64" alt="Fórum">
+        <a href="forum.html">Fórum</a>
+    </div>
+    <div class="menu-item">
+        <img src="https://via.placeholder.com/64" alt="Empreendedorismo">
+        <a href="empreendedorismo.html">Empreendedorismo</a>
+    </div>
+</div>
+
+<footer>
+    <p>&copy; 2024 Plataforma de Aprendizagem. Todos os direitos reservados.</p>
+</footer>
+
+<script>
+    function login() {
+        const username = document.getElementById("username").value;
+        const password = document.getElementById("password").value;
+
+        // Simulação de validação de login
+        if (username === "admin" && password === "1234") {
+            document.getElementById("login-container").style.display = "none";
+            document.getElementById("menu").style.display = "flex";
+        } else {
+            alert("Usuário ou senha incorretos!");
+        }
+    }
+</script>
+
+</body>
+</html>

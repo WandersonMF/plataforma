@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biblioteca - Plataforma de Aprendizagem</title>
+   
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        
+        nav {
+            background-color: #388E3C;
+            color: white;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .logo {
+            font-size: 22px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo i {
+            margin-right: 10px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 20px;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            padding: 15px 10px;
+            display: inline-block;
+            transition: background-color 0.3s;
+        }
+
+        .nav-links a:hover {
+            background-color: #2E7D32;
+        }
+
+        .search-bar {
+            display: flex;
+            margin-left: 20px;
+        }
+
+        .search-bar input {
+            padding: 8px 12px;
+            border: none;
+            border-radius: 5px 0 0 5px;
+        }
+
+        .search-bar button {
+            background-color: #2E7D32;
+            border: none;
+            color: white;
+            padding: 8px 12px;
+            border-radius: 0 5px 5px 0;
+            cursor: pointer;
+        }
+
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 30px 0;
+            text-align: center;
+        }
+
+        .content {
+            padding: 20px;
+            margin-bottom: 250px; 
+        }
+
+        .filters {
+            margin-bottom: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .filter-button {
+            background-color: #e0e0e0;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 20px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            transition: background-color 0.3s;
+        }
+
+        .filter-button:hover {
+            background-color: #d0d0d0;
+        }
+
+        .filter-button i {
+            margin-right: 5px;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+        }
+
+        .book-item {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            text-align: center;
+            padding: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        .book-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .book-item img {
+            width: 100%;
+            height: auto;
+            max-height: 250px;
+            object-fit: cover;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 15px;
+        }
+
+        .book-info {
+            padding: 10px 0;
+        }
+
+        .book-info h3 {
+            font-size: 18px;
+            margin: 5px 0;
+            color: #333;
+        }
+
+        .book-info p {
+            font-size: 14px;
+            color: #666;
+            margin: 10px 0;
+        }
+
+        .category-tags {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 5px;
+            margin: 10px 0;
+        }
+
+        .category-tag {
+            font-size: 12px;
+            background-color: #e8f5e9;
+            color: #388E3C;
+            padding: 3px 8px;
+            border-radius: 12px;
+            display: inline-flex;
+            align-items: center;
+        }
+
+        .category-tag i {
+            margin-right: 4px;
+            font-size: 10px;
+        }
+
+        .download-button {
+            display: inline-flex;
+            align-items: center;
+            padding: 10px 15px;
+            background-color: #4CAF50;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 14px;
+            transition: background-color 0.3s ease;
+        }
+
+        .download-button i {
+            margin-right: 5px;
+        }
+
+        .download-button:hover {
+            background-color: #45a049;
+        }
+
+        .footer-expanded {
+            background-color: #2E7D32;
+            color: white;
+            padding: 40px 20px;
+            margin-top: 40px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-section h3 {
+            font-size: 18px;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #4CAF50;
+            padding-bottom: 5px;
+            display: inline-block;
+        }
+
+        .footer-section ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 8px;
+        }
+
+        .footer-section a {
+            color: #e0e0e0;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: white;
+            text-decoration: underline;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .social-icons a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            background-color: #388E3C;
+            border-radius: 50%;
+            transition: transform 0.3s, background-color 0.3s;
+        }
+
+        .social-icons a:hover {
+            transform: scale(1.1);
+            background-color: #4CAF50;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            margin-top: 30px;
+            border-top: 1px solid #388E3C;
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                padding: 10px;
+            }
+
+            .nav-links {
+                margin-top: 10px;
+                width: 100%;
+                justify-content: space-around;
+                padding: 0;
+            }
+
+            .nav-links li {
+                margin: 0;
+            }
+
+            .search-bar {
+                margin: 10px 0;
+                width: 100%;
+            }
+
+            .search-bar input {
+                flex-grow: 1;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .book-info h3 {
+                font-size: 16px;
+            }
+
+            .book-info p {
+                font-size: 12px;
+            }
+
+            .download-button {
+                font-size: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <div class="logo">
+        <i class="fas fa-book-open"></i>
+        <span>Plataforma de Aprendizagem</span>
+    </div>
+    <ul class="nav-links">
+        <li><a href="index.html"><i class="fas fa-home"></i> Início</a></li>
+        <li><a href="#"><i class="fas fa-book"></i> Catálogo</a></li>
+        <li><a href="#"><i class="fas fa-info-circle"></i> Sobre</a></li>
+        <li><a href="#"><i class="fas fa-user"></i> Conta</a></li>
+    </ul>
+    <div class="search-bar">
+        <input type="text" placeholder="Buscar livros...">
+        <button><i class="fas fa-search"></i></button>
+    </div>
+</nav>
+
+<header>
+    <h1><i class="fas fa-book-reader"></i> Biblioteca Digital</h1>
+    <p>Baixe livros e materiais de estudo sobre Agricultura, Saúde, Educação e Empreendedorismo</p>
+</header>
+
+<div class="content">
+    <!-- Filtros -->
+    <div class="filters">
+        <button class="filter-button"><i class="fas fa-filter"></i> Todos</button>
+        <button class="filter-button"><i class="fas fa-seedling"></i> Agricultura</button>
+        <button class="filter-button"><i class="fas fa-heartbeat"></i> Saúde</button>
+        <button class="filter-button"><i class="fas fa-graduation-cap"></i> Educação</button>
+        <button class="filter-button"><i class="fas fa-chart-line"></i> Empreendedorismo</button>
+    </div>
+
+    <div class="gallery">
+        <!-- Livro 1 -->
+        <div class="book-item">
+            <img src="imagens/agriculturasustentavel.jpeg" alt="Livro Agricultura">
+            <div class="book-info">
+                <h3>Guia de Agricultura</h3>
+                <div class="category-tags">
+                    <span class="category-tag"><i class="fas fa-seedling"></i> Agricultura</span>
+                    <span class="category-tag"><i class="fas fa-leaf"></i> Sustentável</span>
+                </div>
+                <p>Apostila básica sobre técnicas agrícolas sustentáveis e produtivas para pequenos produtores.</p>
+                <a href="downloads/Agriculturasustentavel.pdf" class="download-button" download><i class="fas fa-download"></i> Baixar</a>
+            </div>
+        </div>
+
+        <!-- Livro 2 -->
+        <div class="book-item">
+            <img src="imagens/saude.webp" alt="Livro Saúde">
+            <div class="book-info">
+                <h3>Saúde e Bem-Estar</h3>
+                <div class="category-tags">
+                    <span class="category-tag"><i class="fas fa-heartbeat"></i> Saúde</span>
+                    <span class="category-tag"><i class="fas fa-apple-alt"></i> Nutrição</span>
+                </div>
+                <p>Manual de cuidados com a saúde e práticas de bem-estar para comunidades rurais.</p>
+                <a href="downloads/saude.pdf" class="download-button" download><i class="fas fa-download"></i> Baixar</a>
+            </div>
+        </div>
+
+        <!-- Livro 3 -->
+        <div class="book-item">
+            <img src="imagens/edutec.jpg" alt="Livro Educação">
+            <div class="book-info">
+                <h3>Educação Tecnológica</h3>
+                <div class="category-tags">
+                    <span class="category-tag"><i class="fas fa-graduation-cap"></i> Educação</span>
+                    <span class="category-tag"><i class="fas fa-laptop"></i> Tecnologia</span>
+                </div>
+                <p>Transformando o ensino com tecnologia e métodos acessíveis para áreas remotas.</p>
+                <a href="downloads/educacaotec.pdf" class="download-button" download><i class="fas fa-download"></i> Baixar</a>
+            </div>
+        </div>
+
+        <!-- Livro 4 -->
+        <div class="book-item">
+            <img src="imagens/empreendedorismo.jpg" alt="Livro Empreendedorismo">
+            <div class="book-info">
+                <h3>Empreendedorismo Prático</h3>
+                <div class="category-tags">
+                    <span class="category-tag"><i class="fas fa-chart-line"></i> Empreendedorismo</span>
+                    <span class="category-tag"><i class="fas fa-coins"></i> Finanças</span>
+                </div>
+                <p>Estratégias para iniciar seu negócio com baixo investimento e alto impacto local.</p>
+                <a href="downloads/empreendedorismo.pdf" class="download-button" download><i class="fas fa-download"></i> Baixar</a>
+            </div>
+        </div>
+
+        <!-- Livro 5 -->
+        <div class="book-item">
+            <img src="imagens/producao.jpg" alt="Livro Agroecologia">
+            <div class="book-info">
+                <h3>Práticas Agrícolas</h3>
+                <div class="category-tags">
+                    <span class="category-tag"><i class="fas fa-seedling"></i> Agricultura</span>
+                    <span class="category-tag"><i class="fas fa-recycle"></i> Sustentabilidade</span>
+                </div>
+                <p>Boas práticas para produção de alimentos.</p>
+                <a href="downloads/producao.pdf" class="download-button" download><i class="fas fa-download"></i> Baixar</a>
+            </div>
+        </div>
+
+        <!-- Livro 6 -->
+        <div class="book-item">
+            <img src="imagens/marketing.png" alt="Livro Marketing Digital">
+            <div class="book-info">
+                <h3>Marketing Digital para Pequenos Negócios</h3>
+                <div class="category-tags">
+                    <span class="category-tag"><i class="fas fa-chart-line"></i> Empreendedorismo</span>
+                    <span class="category-tag"><i class="fas fa-bullhorn"></i> Marketing</span>
+                </div>
+                <p>Estratégias simples e de baixo custo para divulgar seu negócio na internet.</p>
+                <a href="downloads/marketing.pdf" class="download-button" download><i class="fas fa-download"></i> Baixar</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer class="footer-expanded">
+    <div class="footer-content">
+        <div class="footer-section">
+            <h3>Sobre Nós</h3>
+            <p>A Plataforma de Aprendizagem é dedicada a democratizar o acesso ao conhecimento em áreas fundamentais para o desenvolvimento sustentável das comunidades.</p>
+        </div>
+
+        <div class="footer-section">
+            <h3>Links Rápidos</h3>
+            <ul>
+                <li><a href="#"><i class="fas fa-angle-right"></i> Início</a></li>
+                <li><a href="#"><i class="fas fa-angle-right"></i> Catálogo Completo</a></li>
+                <li><a href="#"><i class="fas fa-angle-right"></i> Novos Materiais</a></li>
+                <li><a href="#"><i class="fas fa-angle-right"></i> Termos de Uso</a></li>
+                <li><a href="#"><i class="fas fa-angle-right"></i> Política de Privacidade</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-section">
+            <h3>Categorias</h3>
+            <ul>
+                <li><a href="#"><i class="fas fa-seedling"></i> Agricultura</a></li>
+                <li><a href="#"><i class="fas fa-heartbeat"></i> Saúde</a></li>
+                <li><a href="#"><i class="fas fa-graduation-cap"></i> Educação</a></li>
+                <li><a href="#"><i class="fas fa-chart-line"></i> Empreendedorismo</a></li>
+                <li><a href="#"><i class="fas fa-recycle"></i> Sustentabilidade</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-section">
+            <h3>Contato</h3>
+            <p><i class="fas fa-envelope"></i> contato@plataformaedu.com.br</p>
+    
+            
+            <h3>Siga-nos</h3>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+                <a href="#"><i class="fab fa-whatsapp"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        <p>&copy; 2025 Plataforma de Aprendizagem. Todos os direitos reservados.</p>
+        
+    </div>
+</footer>
+
+</body>
+</html>
